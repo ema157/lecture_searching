@@ -1,6 +1,9 @@
 from pathlib import Path
 import json
+from generators import ordered_sequence
 
+import time
+import matplotlib.pyplot as plt
 
 def read_data(file_name, field):
 
@@ -30,7 +33,8 @@ def read_data(file_name, field):
             return None
 
 
-sequence = [54, 2, 18, 5, 3, 31, 20, 65, -10, 300, 17, 5, -1, 0, 0, 102, 7, 8, 9, 9, -3, -5, 0, 1, 63, 82, -36, -5]
+
+
 def linear_search(seq, number):
     positions = []
     count = 0
@@ -43,8 +47,31 @@ def linear_search(seq, number):
 
 
 
+def binary_search(seq, number):
+    left = 0
+    right = len(seq) - 1
+
+    while left <= right:
+        middle = (left + right) // 2
+        if seq[middle] == number:
+            return middle
+        elif seq[middle] > number:
+            right = middle - 1
+        else:
+            left = middle + 1
+    return None
+
+
+
+
+
+
 def main():
-    pass
+    time = []
+    data = read_data("sequential.json", "ordered_numbers")
+    print(data)
+    print(linear_search(data, 63))
+    print(binary_search(data, 8))
 
 
 if __name__ == "__main__":
