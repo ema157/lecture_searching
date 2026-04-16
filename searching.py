@@ -3,6 +3,7 @@ import json
 
 
 def read_data(file_name, field):
+
     """
     Reads a JSON file and returns data for a given field.
 
@@ -21,6 +22,13 @@ def read_data(file_name, field):
     cwd_path = Path.cwd()
     
     file_path = cwd_path / file_name
+    with open(file_path, "r") as file_obj:
+        data = json.load(file_obj)
+        if field in {"unordered_numbers", "ordered_numbers", "dna_sequence"}:
+            return data[field]
+        else:
+            return None
+
 
 
 def main():
