@@ -30,6 +30,18 @@ def read_data(file_name, field):
             return None
 
 
+sequence = [54, 2, 18, 5, 3, 31, 20, 65, -10, 300, 17, 5, -1, 0, 0, 102, 7, 8, 9, 9, -3, -5, 0, 1, 63, 82, -36, -5]
+def linear_search(seq, number):
+    positions = []
+    count = 0
+    for i, s in enumerate(seq):
+        if s == number:
+            positions.append(i)
+            count += 1
+    return {"positions": positions, "count": count}
+
+
+
 
 def main():
     pass
